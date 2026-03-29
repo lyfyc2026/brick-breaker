@@ -1,0 +1,10 @@
+
+# 编译产物
+build/
+*.o
+brick_breaker
+test_game
+# 临时文件
+*.log
+.vscode/
+Unity/
