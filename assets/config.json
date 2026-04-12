@@ -1,0 +1,27 @@
+{
+    "game": {
+        "windowWidth": 800,
+        "windowHeight": 600,
+        "title": "Breakout 打砖块",
+        "maxLives": 3,
+        "targetFPS": 60
+    },
+    "ball": {
+        "radius": 10.0,
+        "initialSpeedX": 300.0,
+        "initialSpeedY": -300.0
+    },
+    "paddle": {
+        "width": 120.0,
+        "height": 20.0,
+        "speed": 400.0
+    },
+    "bricks": {
+        "rows": 5,
+        "cols": 10,
+        "width": 70.0,
+        "height": 20.0,
+        "padding": 5.0,
+        "offsetY": 50.0
+    }
+}

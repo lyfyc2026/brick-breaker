@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <nlohmann/json.hpp>
 #include "Ball.h"
 #include "Paddle.h"
 #include "Brick.h"
@@ -43,6 +44,7 @@ private:
     void DrawPlaying();
     void DrawPaused();
     void DrawGameOver();
+void InitBricks(const nlohmann::json&config);
 
 public:
     // 游戏生命周期核心方法
