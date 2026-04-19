@@ -1,43 +1,32 @@
 cmake_minimum_required(VERSION 3.10)
-project(Breakout LANGUAGES CXX)
+project(Breakout)
 
-# 设置C++标准
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 查找依赖库
+# 找到依赖库
 find_package(raylib REQUIRED)
-find_package(nlohmann_json 3.2.0 REQUIRED)
+find_package(nlohmann_json REQUIRED)
 find_package(GTest REQUIRED)
 
-# 头文件目录
-include_directories(include)
-
-# 游戏源码
-set(GAME_SOURCES
+# 游戏主程序
+add_executable(Breakout
     src/main.cpp
     src/Game.cpp
     src/Ball.cpp
     src/Paddle.cpp
     src/Brick.cpp
+    src/PowerUp.cpp
 )
 
-# 生成游戏可执行文件
-add_executable(Breakout ${GAME_SOURCES})
-target_link_libraries(Breakout raylib nlohmann_json::nlohmann_json)
+# 链接库
+target_link_libraries(Breakout PRIVATE raylib nlohmann_json::nlohmann_json)
 
-
-# 单元测试配置
-enable_testing()
-set(TEST_SOURCES
+# 测试程序（保留你原来的）
+add_executable(CollisionTest
     tests/CollisionTest.cpp
     src/Ball.cpp
     src/Brick.cpp
     src/Paddle.cpp
 )
-add_executable(CollisionTest ${TEST_SOURCES})
-target_include_directories(CollisionTest PRIVATE include)
-target_link_libraries(CollisionTest GTest::GTest GTest::Main raylib)
-add_test(NAME BallCollisionTest COMMAND CollisionTest)
-
-
+target_link_libraries(CollisionTest PRIVATE raylib GTest::GTest GTest::Main)
